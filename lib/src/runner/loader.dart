@@ -69,7 +69,7 @@ class Loader {
   /// This emits [LoadSuite]s that must then be run to emit the actual
   /// [RunnerSuite]s defined in the file.
   Stream<LoadSuite> loadDir(String dir) {
-    return mergeStreams(new Directory(dir).listSync(recursive: true)
+    return mergeStreams(new Directory(dir).listSync(recursive: true, followLinks:false)
         .map((entry) {
       if (entry is! File) return new Stream.fromIterable([]);
 
